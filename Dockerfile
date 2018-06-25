@@ -1,14 +1,18 @@
-FROM neo4j:3.4.1
-MAINTAINER MRAJAB <moh.rajab@dce.sa>
+# Insipred by https://github.com/CliffordAnderson/docker-containers/blob/master/neo4j/Dockerfile
+# Includes JDBC plugins
+# https://neo4j.com/developer/kb/how-do-i-use-cypher-to-connect-to-a-rbms-using-jdbc/
 
-ENV APOC_URI https://github.com/neo4j-contrib/neo4j-apoc-procedures/releases/download/3.4.0.1/apoc-3.4.0.1-all.jar
+FROM neo4j:3.1.1
+MAINTAINER Brock Tibert <btibert3@gmail.com>
+
+ENV APOC_URI https://github.com/neo4j-contrib/neo4j-apoc-procedures/releases/download/3.1.0.3/apoc-3.1.0.3-all.jar
 
 
 RUN mv plugins /plugins && ln -s /plugins
 
-RUN curl --fail --silent --show-error --location --output apoc-3.4.0.1-all.jar $APOC_URI \
-    && mv apoc-3.4.0.1-all.jar /plugins
-
+RUN curl --fail --silent --show-error --location --output apoc-3.0.4.1-all.jar $APOC_URI \
+    && mv apoc-3.0.4.1-all.jar /plugins
+    
 EXPOSE 7474 7473 7687
 
 CMD ["neo4j"]
