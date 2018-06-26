@@ -2,7 +2,7 @@
 # Includes JDBC plugins
 # https://neo4j.com/developer/kb/how-do-i-use-cypher-to-connect-to-a-rbms-using-jdbc/
 
-FROM neo4j:3.1.1
+FROM neo4j:3.4.0.1
 MAINTAINER Brock Tibert <btibert3@gmail.com>
 
 ENV APOC_URI https://github.com/neo4j-contrib/neo4j-apoc-procedures/releases/download/3.4.0.1/apoc-3.4.0.1-all.jar
